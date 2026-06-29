@@ -1,0 +1,3 @@
+# The bundled landing page embeds base64 assets — treat as binary so Git never
+# rewrites line endings inside it.
+index.html -text
