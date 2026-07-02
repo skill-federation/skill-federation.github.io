@@ -281,7 +281,11 @@
       </div>
       <div class="ent-right">
         <div class="ent-illo">
-          <img class="slot-img" src="assets/ent.png" alt="Illustration: an engineer overseeing many agent screens">
+          <video class="slot-img" autoplay muted loop playsinline preload="metadata"
+                 poster="assets/ent.png" aria-label="Animation: Skill Federation mascot overseeing many agent screens">
+            <source src="assets/ent.webm" type="video/webm">
+            <source src="assets/ent.mp4" type="video/mp4">
+          </video>
         </div>
         <p class="sec-note">🚨 NVIDIA scanned <b>42,447 public skills</b>: <b>26.1%</b> carried a vulnerability, <b>5.2%</b> were likely malicious — and a skill runs with your agent's full permissions. Scanning is <b>best-effort</b> (<i>“no findings ≠ no risk”</i>); <b>nothing installs without your approval.</b></p>
         <div class="registry">
@@ -355,7 +359,11 @@ restart Claude Code.</code>
         </div>
         <div class="inst-art">
           <div class="slot-card">
-            <img class="slot-img" src="assets/install.png" alt="Illustration: Skill Federation mascot waving">
+            <video class="slot-img" autoplay muted loop playsinline preload="metadata"
+                   poster="assets/install.png" aria-label="Animation: Skill Federation mascot presenting a skill">
+              <source src="assets/install.webm" type="video/webm">
+              <source src="assets/install.mp4" type="video/mp4">
+            </video>
           </div>
         </div>
       </div>
@@ -389,6 +397,14 @@ restart Claude Code.</code>
       setTimeout(function () { b.textContent = prev; }, 1400);
     });
   });
+
+  // Respect reduced-motion: keep the poster frame, don't autoplay the mascots.
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('video.slot-img').forEach(function (v) {
+      v.removeAttribute('autoplay');
+      v.pause();
+    });
+  }
 </script>
 
 
